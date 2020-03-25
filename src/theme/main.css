@@ -1,15 +1,3 @@
-
-ion-header .toolbar {
- margin: auto;
-}
-
-@media (min-width: 992px) {
- ion-navbar.toolbar,
- ion-header .toolbar[fixed],
- ion-footer .toolbar[fixed],
- ion-tabs .tabbar {
-   margin: 0;
-   padding-right: calc((100% - 992px) / 2);
-   padding-left: calc((100% - 992px) / 2);
- }
+ion-content .desktop ion-tab-bar {
+  justify-content: right;
 }

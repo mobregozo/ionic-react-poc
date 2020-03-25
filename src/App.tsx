@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import {
   IonApp,
   IonIcon,
@@ -7,13 +7,13 @@ import {
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
-  IonTabs,
+  IonTabs
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { home, settings, person } from "ionicons/icons";
-import Tab1 from "./pages/Tab1";
-import Tab2 from "./pages/Tab2";
-import Tab3 from "./pages/Tab3";
+import Home from "./pages/Home";
+import Settings from "./pages/Settings";
+import Profile from "./pages/Profile";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -35,43 +35,38 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import "./theme/main.css";
 
-const isMobile = navigator.userAgent.match(
-  /(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i
-);
+// const isMobile = navigator.userAgent.match(
+//   /(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i
+// );
 
-const isDesktop = !isMobile;
+// const isDesktop = !isMobile;
 
 const App: React.FC = () => {
-  const desktopStyles = {
-    justifyContent: "flex-end"
-  };
+
   return (
     <IonApp>
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
-            <Route path="/home" component={Tab1} exact />
-            <Route path="/settings" component={Tab2} exact />
-            <Route path="/contact" component={Tab3} exact />
+            <Route path="/home" component={Home} exact />
+            <Route path="/settings" component={Settings} exact />
+            <Route path="/profile" component={Profile} exact />
+            <Redirect exact from="/" to="/home" />
           </IonRouterOutlet>
-
-          <IonTabBar
-            slot={isDesktop ? "top" : "bottom"}
-            style={isDesktop ? desktopStyles : {}}
-          >
-            <IonTabButton tab="home" href="/home">
-              {isMobile && <IonIcon icon={home} />}
+          <IonTabBar slot={"bottom"}>
+            <IonTabButton tab="taab1" href="/home">
+              <IonIcon icon={home} />
               <IonLabel>Home</IonLabel>
             </IonTabButton>
 
-            <IonTabButton tab="settings" href="/settings">
-              {isMobile && <IonIcon icon={settings} />}
+            <IonTabButton tab="tab2" href="/settings">
+              <IonIcon icon={settings} />
               <IonLabel>Settings</IonLabel>
             </IonTabButton>
 
-            <IonTabButton tab="contact" href="/contact">
-              {isMobile && <IonIcon icon={person} />}
-              <IonLabel>Contact</IonLabel>
+            <IonTabButton tab="tab3" href="/profile">
+              <IonIcon icon={person} />
+              <IonLabel>Profile</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
