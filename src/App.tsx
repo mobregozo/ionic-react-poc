@@ -44,7 +44,7 @@ import "./theme/main.css";
 const App: React.FC = () => {
 
   return (
-    <IonApp>
+    <IonApp className="ios">
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
@@ -54,18 +54,18 @@ const App: React.FC = () => {
             <Redirect exact from="/" to="/home" />
           </IonRouterOutlet>
           <IonTabBar slot={"bottom"}>
-            <IonTabButton tab="taab1" href="/home">
-              <IonIcon icon={home} />
+            <IonTabButton tab="home" href="/home">
+              <IonIcon className="ion-hide-sm-up" icon={home} />
               <IonLabel>Home</IonLabel>
             </IonTabButton>
 
-            <IonTabButton tab="tab2" href="/settings">
-              <IonIcon icon={settings} />
+            <IonTabButton tab="settings" href="/settings">
+              <IonIcon className="ion-hide-sm-up" icon={settings} />
               <IonLabel>Settings</IonLabel>
             </IonTabButton>
 
-            <IonTabButton tab="tab3" href="/profile">
-              <IonIcon icon={person} />
+            <IonTabButton tab="profile" href="/profile">
+              <IonIcon className="ion-hide-sm-up" icon={person} />
               <IonLabel>Profile</IonLabel>
             </IonTabButton>
           </IonTabBar>

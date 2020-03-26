@@ -7,37 +7,54 @@ import {
   IonToolbar,
   IonCard,
   IonCardContent,
-  IonCardHeader
+  IonCardHeader,
+  IonGrid,
+  IonSearchbar,
+  IonBadge,
+  IonItem,
+  IonIcon,
+  IonButton
 } from "@ionic/react";
 import "./Home.css";
+import { closeCircleOutline } from "ionicons/icons";
 
 const Home: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Home</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonHeader collapse="condense">
+      <IonGrid fixed>
+        <IonHeader mode="md">
           <IonToolbar>
-            <IonTitle size="large">Home</IonTitle>
+            <IonTitle>Profile</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonCard>
-          <IonCardHeader>Sueldo</IonCardHeader>
-          <IonCardContent>test</IonCardContent>
-        </IonCard>
-        <IonCard>
-          <IonCardHeader>HOLA</IonCardHeader>
-          <IonCardContent>test</IonCardContent>
-        </IonCard>
-        <IonCard>
-          <IonCardHeader>HOLA</IonCardHeader>
-          <IonCardContent>test</IonCardContent>
-        </IonCard>
-      </IonContent>
+        <IonContent className="ion-padding-top">
+          <p>Buscar Sueldos</p>
+          <IonSearchbar></IonSearchbar>
+          <IonItem>
+            <IonButton className="ion-margin-end" color="primary">
+              Barcelona <IonIcon class="ion-margin-start" icon={closeCircleOutline} />
+            </IonButton>
+            <IonButton className="ion-margin-end" color="secondary">
+              JavaScript <IonIcon class="ion-margin-start" icon={closeCircleOutline} />
+            </IonButton>
+            <IonButton className="ion-margin-end" color="tertiary">
+              Senior <IonIcon class="ion-margin-start" icon={closeCircleOutline} />
+            </IonButton>
+          </IonItem>
+          <IonCard>
+            <IonCardHeader>Sueldo x </IonCardHeader>
+            <IonCardContent>2000 €</IonCardContent>
+          </IonCard>
+          <IonCard>
+            <IonCardHeader>Sueldo x </IonCardHeader>
+            <IonCardContent>2000 €</IonCardContent>
+          </IonCard>
+          <IonCard>
+            <IonCardHeader>Sueldo x </IonCardHeader>
+            <IonCardContent>2000 €</IonCardContent>
+          </IonCard>
+        </IonContent>
+      </IonGrid>
     </IonPage>
   );
 };

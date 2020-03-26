@@ -1,24 +1,28 @@
-import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Settings.css';
+import React from "react";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonGrid
+} from "@ionic/react";
+import ExploreContainer from "../components/ExploreContainer";
+import "./Settings.css";
 
 const Settings: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Settings</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonHeader collapse="condense">
+      <IonGrid fixed>
+        <IonHeader mode="md">
           <IonToolbar>
-            <IonTitle size="large">Settings</IonTitle>
+            <IonTitle>Settings</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Settings page" />
-      </IonContent>
+        <IonContent>
+          <ExploreContainer name="Profile page" />
+        </IonContent>
+      </IonGrid>
     </IonPage>
   );
 };
