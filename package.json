@@ -23,6 +23,7 @@
     "typescript": "3.7.4"
   },
   "scripts": {
+    "deploy": "npm run build && firebase deploy",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,5 +44,8 @@
       "last 1 safari version"
     ]
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "devDependencies": {
+    "node-sass": "^4.13.1"
+  }
 }
