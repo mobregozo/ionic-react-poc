@@ -7,7 +7,7 @@ import {
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
-  IonTabs
+  IonTabs,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { home, settings, person } from "ionicons/icons";
@@ -32,27 +32,23 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 /* Theme variables */
-import "./theme/variables.css";
-import "./theme/main.css";
-
-// const isMobile = navigator.userAgent.match(
-//   /(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i
-// );
-
-// const isDesktop = !isMobile;
+import "./theme/variables.scss";
+import "./theme/main.scss";
+import SalaryDetailPage from "./pages/SalaryDetailPage";
 
 const App: React.FC = () => {
-
   return (
     <IonApp className="ios">
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
             <Route path="/home" component={Home} exact />
+            <Route path="/home/:id" component={SalaryDetailPage} exact />
             <Route path="/settings" component={Settings} exact />
             <Route path="/profile" component={Profile} exact />
             <Redirect exact from="/" to="/home" />
           </IonRouterOutlet>
+
           <IonTabBar slot={"bottom"}>
             <IonTabButton tab="home" href="/home">
               <IonIcon className="ion-hide-sm-up" icon={home} />
