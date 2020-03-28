@@ -15,39 +15,41 @@ import {
   IonLabel,
   IonItem,
   IonButtons,
-  IonBackButton
+  IonBackButton,
+  IonListHeader,
+  IonList,
+  IonChip
 } from "@ionic/react";
 import { useParams } from "react-router-dom";
 
-import { Salary } from "../../components/SalaryList";
 import "./SalaryDetailPage.css";
 
-type Props = {
-  salary?: Salary;
-};
-
-type Technology = {
-  name: string;
-  icon: string;
-};
-
-type Member = {
-  name: string;
-  avatar: string;
-  yearsOfExperience: number;
-  techStack?: Technology[];
-};
-
-const members: Member[] = [
+const companySalaries = [
   {
-    name: "Manu",
-    yearsOfExperience: 10,
+    name: "Manuel",
+    salary: 2000,
+    position: "Back End Developer",
     avatar:
       "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
   },
   {
     name: "Pablo",
-    yearsOfExperience: 7,
+    salary: 3000,
+    position: "DevOps",
+    avatar:
+      "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+  },
+  {
+    name: "Juan",
+    salary: 5000,
+    position: "Front End Developer",
+    avatar:
+      "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
+  },
+  {
+    name: "Pedro",
+    salary: 10000,
+    position: "Back End Developer",
     avatar:
       "https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
   }
@@ -75,8 +77,15 @@ const SalaryDetailPage: React.FC = () => {
         <IonGrid className="page-header" fixed>
           <IonCard>
             <IonCardHeader>
-              <IonCardSubtitle>{salary.company}</IonCardSubtitle>
-              <IonCardTitle>$ {salary.amount}</IonCardTitle>
+              <IonCardTitle>
+                {salary.company}
+                <IonChip class="ion-margin-start" color="success">
+                  <IonLabel>4.5/5</IonLabel>
+                </IonChip>
+              </IonCardTitle>
+              <IonCardSubtitle class="ion-padding-top">
+                Salario Promedio: {salary.amount} €
+              </IonCardSubtitle>
             </IonCardHeader>
             <IonCardContent>
               Bienvenido Lorem, ipsum dolor sit amet consectetur adipisicing
@@ -85,18 +94,26 @@ const SalaryDetailPage: React.FC = () => {
               inventore eos assumenda quas nobis nulla saepe.
             </IonCardContent>
           </IonCard>
-          <IonItem lines="none">Reviews</IonItem>
-          {members.map((member: Member) => (
-            <IonItem key={member.name}>
-              <IonAvatar slot="start">
-                <img
-                  alt="member"
-                  src="https://previews.123rf.com/images/yupiramos/yupiramos1804/yupiramos180421549/100217342-doctor-professional-avatar-character-vector-illustration-design.jpg"
-                />
-              </IonAvatar>
-              <IonLabel>{member.name}</IonLabel>
-            </IonItem>
-          ))}
+          <IonList class="ion-padding-horizontal">
+            <IonListHeader color="none" lines="none">
+              Otros salarios ingresados:
+            </IonListHeader>
+            {companySalaries.map(review => (
+              <IonItem key={review.name}>
+                <IonAvatar slot="start">
+                  <img
+                    alt="member"
+                    src="https://previews.123rf.com/images/yupiramos/yupiramos1804/yupiramos180421549/100217342-doctor-professional-avatar-character-vector-illustration-design.jpg"
+                  />
+                </IonAvatar>
+                <IonLabel>
+                  <h2>{review.name}</h2>
+                  <h3>{review.salary}</h3>
+                  <p>{review.position}</p>
+                </IonLabel>
+              </IonItem>
+            ))}
+          </IonList>
         </IonGrid>
       </IonContent>
     </IonPage>

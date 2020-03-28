@@ -52,7 +52,7 @@ export const CreateSalary: React.FC<Props> = ({
       <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonButtons slot="end">
-            <IonButton onClick={confirmModal}>Cerrar</IonButton>
+            <IonButton onClick={closeModal}>Cerrar</IonButton>
           </IonButtons>
           <IonTitle>Registrar Salario</IonTitle>
         </IonToolbar>
@@ -85,9 +85,13 @@ export const CreateSalary: React.FC<Props> = ({
           ></IonInput>
         </IonItem>
         <br />
-        <IonItem lines="none">
-          <IonLabel>Salario: {formNewSalary.salary}</IonLabel>
+        <IonItem
+          class="ion-justify-content-center ion-padding-end"
+          lines="none"
+        >
           <IonRange
+            class="ion-no-padding ion-padding-vertical "
+            pin={true}
             onIonChange={e =>
               setFormNewSalary({
                 ...formNewSalary,
@@ -98,8 +102,9 @@ export const CreateSalary: React.FC<Props> = ({
             max={2000}
             color="secondary"
           >
-            <IonLabel slot="start">1000</IonLabel>
-            <IonLabel slot="end">3000</IonLabel>
+            <IonLabel slot="start" class="ion-margin-end">Salario</IonLabel>
+            <IonLabel slot="start">1000€</IonLabel>
+            <IonLabel slot="end">3000€</IonLabel>
           </IonRange>
         </IonItem>
       </IonContent>
