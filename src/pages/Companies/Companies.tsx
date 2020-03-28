@@ -85,7 +85,7 @@ const Companies: React.FC = () => {
               <IonCard key={company.name}>
                 <IonCardContent>
                   <IonCardTitle>{company.name}</IonCardTitle>
-                  <IonCardSubtitle>{company.employees}</IonCardSubtitle>
+                  <IonCardSubtitle>Empleados: {company.employees}</IonCardSubtitle>
                   {company.description}
                 </IonCardContent>
               </IonCard>
