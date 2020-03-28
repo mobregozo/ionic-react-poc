@@ -19,7 +19,7 @@ import {
 } from "@ionic/react";
 import { useParams } from "react-router-dom";
 
-import { Salary } from "../components/SalaryList";
+import { Salary } from "../../components/SalaryList";
 import "./SalaryDetailPage.css";
 
 type Props = {

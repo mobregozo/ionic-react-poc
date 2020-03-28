@@ -5,43 +5,39 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonLabel,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonGrid,
-  IonSearchbar,
-  IonItem,
-  IonIcon,
-  IonChip,
   IonButton,
   IonCardSubtitle,
   IonCardTitle,
   IonListHeader
 } from "@ionic/react";
 import "./Home.css";
-import { closeCircleOutline } from "ionicons/icons";
-import { SalaryList, Salary } from "../components/SalaryList";
-import { CreateSalary } from "./CreateSalary";
+import { SalaryList, Salary } from '../../components/SalaryList';
+import { CreateSalary } from "../CreateSalary/CreateSalary";
 
 const Home: React.FC = () => {
   const [showNewSalaryModal, setShowNewSalaryModal] = useState(false);
-
-  const salaries = [
+  const [salaries, setSalaries] = useState([
     {
       company: "Frontmen",
-      amount: 2000
+      position:'Front End Developer',
+      salary: 2000
     },
     {
       company: "Xebia",
-      amount: 4000
+      position:'Front End Developer',
+      salary: 4000
     },
     {
       company: "Kramp",
-      amount: 5000
+      position:'Front End Developer',
+      salary: 5000
     }
-  ];
-
+  ]);
+ 
   const handleSalaryClick = (salary: Salary) => {
     alert(salary.company);
   };
@@ -52,6 +48,10 @@ const Home: React.FC = () => {
 
   const handleNewSalary = () => {
     setShowNewSalaryModal(false);
+
+  };
+  const handleSubmitNewSalary = (newSalary: any) => {
+    setSalaries([...salaries,newSalary]);
   };
 
   return (
@@ -63,6 +63,7 @@ const Home: React.FC = () => {
       </IonHeader>
       <IonContent>
         <CreateSalary
+          submitValue={handleSubmitNewSalary}
           showModal={showNewSalaryModal}
           closeModal={handleNewSalary}
         ></CreateSalary>
@@ -75,7 +76,7 @@ const Home: React.FC = () => {
             />
             <IonCardHeader>
               <IonCardSubtitle>Barcelona, spain</IonCardSubtitle>
-              <IonCardTitle>Job Tracker Salaries</IonCardTitle>
+              <IonCardTitle>Salary Tracker</IonCardTitle>
             </IonCardHeader>
             <IonCardContent>
               Bienvenido Lorem, ipsum dolor sit amet consectetur adipisicing
@@ -95,18 +96,8 @@ const Home: React.FC = () => {
           </IonButton>
 
           <IonListHeader color="none" lines="none">
-            Buscar Salarios
+            Ultimos Salarios Registrados
           </IonListHeader>
-          <IonItem lines="none">
-            <IonSearchbar className="ion-no-padding"></IonSearchbar>
-          </IonItem>
-
-          <IonItem lines="none">
-            <IonChip color="primary">
-              <IonLabel>Rabobank</IonLabel>
-              <IonIcon icon={closeCircleOutline} />
-            </IonChip>
-          </IonItem>
           <SalaryList salaries={salaries} onSalaryClick={handleSalaryClick} />
         </IonGrid>
       </IonContent>

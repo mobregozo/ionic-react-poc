@@ -16,12 +16,17 @@ import {
   IonCardTitle,
   IonCardSubtitle,
   IonList,
-  IonListHeader
+  IonListHeader,
+  IonIcon
 } from "@ionic/react";
+import { moon, notificationsOutline } from "ionicons/icons";
 
 import "./Profile.css";
 
 const Profile: React.FC = () => {
+  const toggleDarkMode = (event: any) => {
+    document.body.classList.toggle("dark", event.detail.checked);
+  };
   return (
     <IonPage>
       <IonHeader className="ion-hide-sm-up" mode="md">
@@ -45,19 +50,32 @@ const Profile: React.FC = () => {
           </IonCard>
           <IonList>
             <IonItem lines={"none"} mode="ios">
+              <IonIcon slot="start" icon={moon}></IonIcon>
+              <IonLabel>Activar Dark Mode</IonLabel>
+              <IonToggle
+                onIonChange={e => toggleDarkMode(e)}
+                slot="end"
+              ></IonToggle>
+            </IonItem>
+            <IonItem lines={"none"} mode="ios">
+              <IonIcon slot="start" icon={notificationsOutline}></IonIcon>
               <IonLabel>Notificationes </IonLabel>
-              <IonToggle />
+              <IonToggle slot="end" />
             </IonItem>
             <IonListHeader className="ion-margin-bottom">
               Informacion personal
             </IonListHeader>
             <IonItem>
               <IonLabel>Salario Anual</IonLabel>
-              <IonBadge color="secondary" slot="end">30.000 €</IonBadge>
+              <IonBadge color="secondary" slot="end">
+                30.000 €
+              </IonBadge>
             </IonItem>
             <IonItem>
               <IonLabel>Compañia</IonLabel>
-              <IonBadge color="secondary" slot="end">Glovo</IonBadge>
+              <IonBadge color="secondary" slot="end">
+                Glovo
+              </IonBadge>
             </IonItem>
             <IonItem>
               <IonLabel>Años de experiencia</IonLabel>
@@ -74,11 +92,15 @@ const Profile: React.FC = () => {
             </IonItem>
             <IonItem>
               <IonLabel>Promedio en tu Compañia</IonLabel>
-              <IonBadge color="warning" slot="end">35.000 €</IonBadge>
+              <IonBadge color="warning" slot="end">
+                35.000 €
+              </IonBadge>
             </IonItem>
             <IonItem>
               <IonLabel>Promedio en tu Posicion</IonLabel>
-              <IonBadge color="danger" slot="end">40.000 €</IonBadge>
+              <IonBadge color="danger" slot="end">
+                40.000 €
+              </IonBadge>
             </IonItem>
           </IonList>
         </IonGrid>
